@@ -6,7 +6,7 @@ import {
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { InjectModel } from '@nestjs/mongoose';
-import { User } from './entity/users.schema';
+import { User, UserDocument } from './entity/users.schema';
 import { Model, Types } from 'mongoose';
 import { UserResponseDto } from './dto/user-response.dto';
 import * as bcrypt from 'bcrypt';
@@ -65,6 +65,15 @@ export class UsersService {
     };
 
     return response;
+  }
+
+  async findOneToLogin(email: string): Promise<UserDocument> {
+    const user = await this.userModel.findOne({ email });
+
+    if (!user) {
+      throw new NotFoundException('User not found');
+    }
+    return user;
   }
 
   async update(

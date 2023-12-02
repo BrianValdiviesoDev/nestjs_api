@@ -57,7 +57,10 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+## Environment variables
+__MONGO_DB_URI__ : mongodb://user:password@host:port/db
 
+__JWT_SECRET__ : your secret to sign jwt
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
